@@ -35,7 +35,12 @@
 			"`": "~", "1": "!", "2": "@", "3": "#", "4": "$", "5": "%", "6": "^", "7": "&",
 			"8": "*", "9": "(", "0": ")", "-": "_", "=": "+", ";": ": ", "'": "\"", ",": "<",
 			".": ">",  "/": "?",  "\\": "|"
-		}
+		},
+
+		textAcceptingInputTypes: [
+			"text", "password", "number", "email", "url", "range", "date", "month",
+			"week", "time", "datetime", "datetime-local", "search", "color", "tel"
+		]
 	};
 
 	function keyHandler( handleObj ) {
@@ -50,8 +55,7 @@
 
 		var origHandler = handleObj.handler,
 			keys = handleObj.data.keys.toLowerCase().split(" "),
-			textAcceptingInputTypes = ["text", "password", "number", "email", "url", "range", "date", "month", "week",
-        "time", "datetime", "datetime-local", "search", "color", "tel"];
+			textAcceptingInputTypes = jQuery.hotkeys.textAcceptingInputTypes;
 
 		handleObj.handler = function( event ) {
 			// Don't fire in text-accepting inputs that we didn't directly bind to
